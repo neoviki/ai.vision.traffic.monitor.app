@@ -41,8 +41,6 @@ chmod +x installer.sh
 ./installer.sh
 ```
 
-> **Requires Python 3.8+** and dependencies like `opencv-python`, `Pillow`, `tkinter`, and `ultralytics`.
-
 To **uninstall**, run:
 
 ```bash
