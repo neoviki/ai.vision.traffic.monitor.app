@@ -1,8 +1,8 @@
 # AI Traffic Monitor – Intelligent Traffic Monitoring with Object Detection and Counting
 
-**AI Traffic Monitor** is a **Convolutional Neural Network (CNN)**–based computer vision application that detects and counts traffic-related objects (such as cars, trucks, buses, and pedestrians) in **images, videos, or live camera feeds**, and displays the results in a **tabular format**.
+**AI Traffic Monitor** is a Convolutional Neural Network (CNN) based computer vision application that detects and counts traffic-related objects (such as cars, trucks, buses, and pedestrians) in images, videos, or live camera feeds, and displays the results in a tabular format.
 
-It uses the **YOLOv8** object detection model - a **pretrained deep CNN** by Ultralytics [1] - to analyze each frame and generate structured traffic object counts and visual overlays.
+It uses the YOLOv8 object detection model - a pretrained deep CNN by Ultralytics [1] - to analyze each frame and generate structured traffic object counts and visual overlays.
 
 ---
 
@@ -14,19 +14,17 @@ It uses the **YOLOv8** object detection model - a **pretrained deep CNN** by Ult
 
 ## Features
 
-* Detects key **traffic-related objects**, including:
-  - **Person**
-  - **Bicycle**
-  - **Car**
-  - **Motorcycle**
-  - **Bus**
-  - **Truck**
-  - **Traffic Light**
-  - **Stop Sign**
-  - **Train**
-  - *(and other common road objects)*
+* Detects traffic-related objects, including:
+  - Person
+  - Bicycle
+  - Car
+  - Motorcycle
+  - Bus
+  - Truck
+  - Train
+  - (and other common road objects)
 
-* **Keyboard shortcuts**
+* Keyboard shortcuts
   - `Esc` or `q`        : Quit the application gracefully
   - `Back to Menu`      : Switch between modes without restarting
 
@@ -72,10 +70,10 @@ ai.traffic.monitor
 
 ### 3. View Results
 
-* Left side: Original **input image/frame**
-* Right side: **AI Processed output** with bounding boxes
-* Bottom: **Object counter table**
-* Top-right: Current **time** and **date**
+* Left side: Original input image/frame
+* Right side: AI Processed output with bounding boxes
+* Bottom: Object counter table
+* Top-right: Current time and date
 
 ### 4. Key Controls
 
