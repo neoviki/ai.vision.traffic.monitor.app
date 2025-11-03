@@ -32,10 +32,8 @@ It uses the YOLOv8 object detection model - a pretrained deep CNN by Ultralytics
 
 ## Installation
 
-1. **Clone the repository**:
-
 ```bash
-git clone https://github.com/yourusername/ai.traffic.monitor.git
+git clone https://github.com/neoviki/ai.vision.traffic.monitor.app
 cd ai.traffic.monitor
 chmod +x installer.sh
 ./installer.sh
