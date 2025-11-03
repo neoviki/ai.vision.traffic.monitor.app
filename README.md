@@ -35,15 +35,13 @@ It uses the YOLOv8 object detection model - a pretrained deep CNN by Ultralytics
 ```bash
 git clone https://github.com/neoviki/ai.vision.traffic.monitor.app
 cd ai.traffic.monitor
-chmod +x installer.sh
-./installer.sh
+chmod +x installer.sh;./installer.sh
 ```
 
 To **uninstall**, run:
 
 ```bash
-chmod +x uninstaller.sh
-./uninstaller.sh
+chmod +x uninstaller.sh;./uninstaller.sh
 ```
 
 ---
