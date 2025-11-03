@@ -86,14 +86,6 @@ ai.traffic.monitor
 
 ---
 
-## Model Information
-
-* Model used: **YOLOv8n** (`yolov8n.pt` )
-* Developer: [Ultralytics](https://github.com/ultralytics/ultralytics)
-* Model type: **CNN-based object detection network**
-
----
-
 ## Tested Systems
 
 | OS                      | Python Version | Dependencies                           | CPU          | RAM    | GPU (optional)                     |
