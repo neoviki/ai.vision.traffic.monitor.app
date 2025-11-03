@@ -1,3 +1,12 @@
+"""
+AI Traffic Monitor Application
+
+Author  : V Natarajan ( Viki )
+Contact : contact@viki.design
+Website : https://www.viki.design
+"""
+
+
 import cv2
 import os
 import numpy as np
