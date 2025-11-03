@@ -1,0 +1,18 @@
+#!/bin/bash
+script_name="ai.traffic.monitor.py"
+
+# Function to find script path
+find_and_exec_script() {
+    if [ -f "/usr/local/bin/$script_name" ]; then
+        python3 "/usr/local/bin/$script_name"
+    elif [ -f "/usr/bin/$script_name" ]; then
+        python3 "/usr/bin/$script_name"
+    elif [ -f "$script_name" ]; then
+        python3 "$script_name"
+    else
+        echo "Error: $script_name not found in /usr/local/bin, /usr/bin, or current directory." >&2
+        exit 1
+    fi
+}
+
+find_and_exec_script
