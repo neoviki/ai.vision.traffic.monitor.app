@@ -80,9 +80,9 @@ ai.traffic.monitor
 
 ## Tested Systems
 
-| OS                      | Python Version | Dependencies                           | CPU          | RAM    | 
-|-------------------------|----------------|----------------------------------------|--------------|--------|
-| Ubuntu 24.04 LTS        | 3.12           | OpenCV, Pillow, Tkinter, YOLOv8        | 4 cores      | 16 GB  | 
+| OS                      | Python Version | Dependencies                           | CPU                              | RAM    | 
+|-------------------------|----------------|----------------------------------------|----------------------------------|--------|
+| Ubuntu 24.04 LTS        | 3.12           | OpenCV, Pillow, Tkinter, YOLOv8        | Intel Core i7-1165G7 @ 2.80 GHz  | 16 GB  | 
 ---
 
 ## References
