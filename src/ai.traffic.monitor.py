@@ -50,18 +50,17 @@ class TrafficDetectionApp:
         self.root = root
         self.set_title_text("AI - Traffic Monitor")
 
-        # Start maximized by default
         try:
             self.root.attributes('-zoomed', True)
         except tk.TclError:
             self.root.attributes('-fullscreen', True)
 
-        # Keep standard window buttons (close, minimize, maximize)
+        # Enable standard window buttons (close, minimize, maximize)
         self.root.overrideredirect(False)
         self.root.configure(bg="black")
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
-        # Handle minimize → restore to 700x400 and center
+        # minimize handling : restore to 700x400 and center
         def on_restore(event=None):
             if self.root.state() == "normal":
                 w, h = 900, 600
@@ -87,7 +86,7 @@ class TrafficDetectionApp:
 
 
     def set_title_text(self, text):
-        # Crude way to move title text to the left ( by adding spaces )
+        # Info: Crude way to move title text to the left ( by adding spaces )
         screen_width = root.winfo_screenwidth()
         num_spaces = screen_width
         title_text = text + " " * num_spaces
