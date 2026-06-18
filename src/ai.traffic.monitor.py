@@ -19,6 +19,15 @@ import datetime
 import queue
 import threading
 
+color_bg1="white"
+color_bg2="white"
+color_bg3="white"
+color_table_border="green"
+color_table_text="#2b2b2b"
+color_table_counter_text="grey"
+
+
+
 
 traffic_classes = [
     "car", "truck", "bus", "motorcycle", "bicycle", "person",
@@ -57,7 +66,7 @@ class TrafficDetectionApp:
 
         # Enable standard window buttons (close, minimize, maximize)
         self.root.overrideredirect(False)
-        self.root.configure(bg="black")
+        self.root.configure(bg="white")
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
         # minimize handling : restore to 700x400 and center
@@ -100,9 +109,9 @@ class TrafficDetectionApp:
     def setup_mode_selector(self):
         for widget in self.root.winfo_children():
             widget.destroy()
-        frame = tk.Frame(self.root, bg="black")
+        frame = tk.Frame(self.root, bg=color_bg3)
         frame.pack(expand=True)
-        tk.Label(frame, text="Select Mode", font=("Arial", 28, "bold"), fg="white", bg="black").pack(pady=40)
+        tk.Label(frame, text="Select Mode", font=("Arial", 28, "bold"), fg="green", bg=color_bg3).pack(pady=40)
         for mode in ["Image Mode", "Video Mode", "Live Mode"]:
             ttk.Button(frame, text=mode, command=lambda m=mode: self.start_mode(m)).pack(pady=10, ipadx=20, ipady=10)
         ttk.Button(frame, text="Exit", command=self.on_close).pack(pady=40)
@@ -133,29 +142,41 @@ class TrafficDetectionApp:
         for widget in self.root.winfo_children():
             widget.destroy()
 
-        self.frame_original = tk.Label(self.root, bg="black", highlightthickness=2, highlightbackground="white")
+        self.frame_original = tk.Label(self.root, bg="white", highlightthickness=2, highlightbackground="white")
         self.frame_original.place(relx=0.01, rely=0.05, relwidth=0.48, relheight=0.7)
-        self.frame_detected = tk.Label(self.root, bg="black", highlightthickness=2, highlightbackground="white")
+        self.frame_detected = tk.Label(self.root, bg="white", highlightthickness=2, highlightbackground="white")
         self.frame_detected.place(relx=0.51, rely=0.05, relwidth=0.48, relheight=0.7)
 
-        self.input_label_overlay = tk.Label(self.root, text="Input", font=("Arial", 16, "bold"), bg="black", fg="white")
-        self.input_label_overlay.place(x=25, y=self.frame_original.winfo_y()+10)
+        self.input_label_overlay = tk.Label(self.root, text="Input", font=("Arial", 16, "bold"), bg="white", fg="green")
+        #self.input_label_overlay.place(x=25, y=self.frame_original.winfo_y()+10)
 
-        self.processed_label_overlay = tk.Label(self.root, text="AI Processed", font=("Arial", 16, "bold"), bg="black", fg="white")
-        self.processed_label_overlay.place(x=int(self.root.winfo_screenwidth()/2)+10, y=self.frame_detected.winfo_y()+10)
+        self.input_label_overlay.place(
+            relx=0.25,
+            rely=0.055,
+            anchor="n"
+        )
 
-        self.date_overlay = tk.Label(self.root, font=("Arial", 14, "bold"), bg="black", fg="cyan")
-        self.date_overlay.place(x=self.root.winfo_screenwidth()-200, y=65)
 
-        self.time_overlay = tk.Label(self.root, font=("Arial", 16, "bold"), bg="black", fg="yellow")
-        self.time_overlay.place(x=self.root.winfo_screenwidth()-185, y=85)
+        self.processed_label_overlay = tk.Label(self.root, text="AI Processed", font=("Arial", 16, "bold"), bg="white", fg="green")
+        #self.processed_label_overlay.place(x=int(self.root.winfo_screenwidth()/2)+10, y=self.frame_detected.winfo_y()+10)
+        self.processed_label_overlay.place(
+            relx=0.75,
+            rely=0.055,
+            anchor="n"
+        )
 
-        self.frame_time_overlay = tk.Label(self.root, font=("Arial", 14, "bold"), bg="black", fg="orange")
-        self.frame_time_overlay.place(x=self.root.winfo_screenwidth()-225, y=110)
+        self.date_overlay = tk.Label(self.root, font=("Arial", 14, "bold"), bg="white", fg="grey")
+        self.date_overlay.place(x=self.root.winfo_screenwidth()-200, y=55)
 
-        console_frame = tk.Frame(self.root, bg="#e8e8e8", highlightbackground="black", highlightthickness=1)
+        self.time_overlay = tk.Label(self.root, font=("Arial", 14, "bold"), bg="white", fg="grey")
+        self.time_overlay.place(x=self.root.winfo_screenwidth()-180, y=90)
+
+        self.frame_time_overlay = tk.Label(self.root, font=("Arial", 14, "bold"), bg="white", fg="grey")
+        self.frame_time_overlay.place(x=self.root.winfo_screenwidth()-225, y=130)
+
+        console_frame = tk.Frame(self.root, bg=color_bg1, highlightbackground=color_bg3, highlightthickness=1)
         console_frame.place(relx=0, rely=0.78, relwidth=1, relheight=0.22)
-        table_frame = tk.Frame(console_frame, bg="black", padx=2, pady=2)
+        table_frame = tk.Frame(console_frame, bg=color_table_border, padx=2, pady=2)
         table_frame.pack(expand=True)
 
         rows = 3
@@ -167,10 +188,11 @@ class TrafficDetectionApp:
                 if idx >= len(traffic_classes):
                     break
                 obj = traffic_classes[idx]
-                cell_frame = tk.Frame(table_frame, bg="white", highlightbackground="black", highlightthickness=1, padx=10, pady=5)
+                cell_frame = tk.Frame(table_frame, bg="white", highlightbackground="white", highlightthickness=1, padx=10, pady=5)
                 cell_frame.grid(row=r, column=c, padx=3, pady=3, sticky="nsew")
-                tk.Label(cell_frame, text=obj.title(), font=("Arial", 13, "bold"), bg="white", anchor="w", width=15).pack(side="left", padx=5)
-                count_label = tk.Label(cell_frame, text="0", font=("Arial", 13, "bold"), bg="white", fg="blue", width=6, anchor="e")
+
+                tk.Label(cell_frame, text=obj.title(), font=("Arial", 13, "bold"), bg="white", fg=color_table_text, anchor="w", width=15).pack(side="left", padx=5)
+                count_label = tk.Label(cell_frame, text="0", font=("Arial", 13, "bold"), bg="white", fg=color_table_counter_text, width=6, anchor="e")
                 count_label.pack(side="left", padx=5)
                 self.counter_labels[obj] = count_label
                 idx += 1
@@ -188,11 +210,20 @@ class TrafficDetectionApp:
     def resize_proportionally(self, img, target_w, target_h):
         h, w = img.shape[:2]
         scale = min(target_w / w, target_h / h)
-        new_w, new_h = int(w * scale), int(h * scale)
+
+        new_w = int(w * scale)
+        new_h = int(h * scale)
+
         resized = cv2.resize(img, (new_w, new_h))
-        background = np.zeros((target_h, target_w, 3), dtype=np.uint8)
-        y_off, x_off = (target_h - new_h) // 2, (target_w - new_w) // 2
+
+        # white background instead of black
+        background = np.ones((target_h, target_w, 3), dtype=np.uint8) * 255
+
+        y_off = (target_h - new_h) // 2
+        x_off = (target_w - new_w) // 2
+
         background[y_off:y_off + new_h, x_off:x_off + new_w] = resized
+
         return background
 
     def show_image(self):
